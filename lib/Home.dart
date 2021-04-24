@@ -41,9 +41,24 @@ class _HomeState extends State<Home> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         onTap: onBottomNavigatonBarTap,
+        selectedItemColor: Colors.blueAccent,
+        selectedIconTheme: IconThemeData(color: Colors.blueAccent),
+        selectedFontSize: 18,
         items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile")
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.home_outlined,
+                color: Colors.black,
+                size: 30,
+              ),
+              label: "Home"),
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.person_outline,
+                color: Colors.black,
+                size: 30,
+              ),
+              label: "Profile")
         ],
       ),
       body: _widgetOptions[_selectedIndex],

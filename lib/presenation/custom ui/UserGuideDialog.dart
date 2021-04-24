@@ -11,45 +11,48 @@ class UserGuideDialog extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text(
-                  "User Guide",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ),
+                Text("Guide",
+                    style: GoogleFonts.ptSans(
+                        textStyle: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18))),
                 SizedBox(
                   height: 20,
                 ),
                 Container(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      "-> Search You have to enter full Number",
-                      style: TextStyle(
-                        fontSize: 16,
-                      ),
-                    )),
+                        " => Please search users with complete phone number",
+                        style: GoogleFonts.ptSans(
+                            textStyle: TextStyle(
+                                color: Colors.grey,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 14)))),
                 SizedBox(
                   height: 10,
                 ),
                 Container(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    "-> Private Account Details not be Displayed",
-                    style: TextStyle(
-                      fontSize: 16,
-                    ),
-                  ),
-                ),
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                        " => Private accounts are hide by default, can request them to access",
+                        style: GoogleFonts.ptSans(
+                            textStyle: TextStyle(
+                                color: Colors.grey,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 14)))),
                 SizedBox(
                   height: 10,
                 ),
                 Container(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    "-> Tap on Addresses You can Navigate to Map",
-                    style: TextStyle(
-                      fontSize: 16,
-                    ),
-                  ),
-                ),
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                        " => Rock with tapping on address to see locations on map",
+                        style: GoogleFonts.ptSans(
+                            textStyle: TextStyle(
+                                color: Colors.grey,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 14)))),
                 SizedBox(
                   height: 20,
                 ),

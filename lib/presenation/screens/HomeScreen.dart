@@ -1,6 +1,6 @@
 import 'package:trueaddresser/imports.dart';
 import 'package:trueaddresser/presenation/custom%20ui/UserSignoutDialog.dart';
-import 'package:trueaddresser/presenation/custom%20ui/customUserCard.dart';
+import 'package:trueaddresser/presenation/custom%20ui/CustomUserCard.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -24,19 +24,19 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           children: <TextSpan>[
         TextSpan(
-            text: "True",
-            style: GoogleFonts.robotoCondensed(
+            text: "true",
+            style: GoogleFonts.poppins(
                 textStyle: TextStyle(
-                    color: HexColor("#172047"),
+                    color: Colors.black,
                     fontWeight: FontWeight.bold,
-                    fontSize: 30))),
+                    fontSize: 25))),
         TextSpan(
-            text: " Addresser",
-            style: GoogleFonts.robotoCondensed(
+            text: " addresser",
+            style: GoogleFonts.poppins(
                 textStyle: TextStyle(
-                    color: HexColor("#8e00e9"),
+                    color: Colors.black,
                     fontWeight: FontWeight.bold,
-                    fontSize: 27))),
+                    fontSize: 22))),
       ]));
 
   @override
@@ -44,8 +44,8 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0.0,
+          backgroundColor: Colors.white,
+          elevation: 1,
           title: customAppBar,
           actions: <Widget>[
             IconButton(
@@ -82,19 +82,19 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               children: <TextSpan>[
                             TextSpan(
-                                text: "True",
-                                style: GoogleFonts.robotoCondensed(
+                                text: "true",
+                                style: GoogleFonts.poppins(
                                     textStyle: TextStyle(
-                                        color: HexColor("#172047"),
+                                        color: Colors.black,
                                         fontWeight: FontWeight.bold,
-                                        fontSize: 30))),
+                                        fontSize: 25))),
                             TextSpan(
-                                text: " Addresser",
-                                style: GoogleFonts.robotoCondensed(
+                                text: " addresser",
+                                style: GoogleFonts.poppins(
                                     textStyle: TextStyle(
-                                        color: HexColor("#8e00e9"),
+                                        color: Colors.black,
                                         fontWeight: FontWeight.bold,
-                                        fontSize: 27))),
+                                        fontSize: 22))),
                           ]));
                     }
                   });
