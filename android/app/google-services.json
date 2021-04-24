@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "708233344125",
+    "project_id": "trueaddressers",
+    "storage_bucket": "trueaddressers.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:708233344125:android:e7005fc6f25002b6376d14",
+        "android_client_info": {
+          "package_name": "com.example.trueaddresser"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "708233344125-av3n974kp5o31vtcgp56c3jh9r850phn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLqXjb2ZwqVHD26uZeN5a6dEsp3aV87Ow"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "708233344125-av3n974kp5o31vtcgp56c3jh9r850phn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
