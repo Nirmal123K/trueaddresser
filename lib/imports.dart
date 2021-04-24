@@ -49,7 +49,7 @@ export 'package:trueaddresser/router/app_router.dart';
 //User Auth
 export 'package:trueaddresser/presenation/screens/user_login.dart';
 export 'package:trueaddresser/presenation/screens/user_signup.dart';
-export 'package:trueaddresser/presenation/screens/OtpScreen.dart';
+export 'package:trueaddresser/presenation/screens/SignupOtpScreen.dart';
 export 'package:trueaddresser/presenation/screens/LoginOtpScreen.dart';
 export 'package:trueaddresser/presenation/screens/HomeScreen.dart';
 export 'package:trueaddresser/presenation/screens/UserProfile.dart';
