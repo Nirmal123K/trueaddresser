@@ -172,13 +172,8 @@ class AuthService {
 
   Future<UserModel> getUserFromDB({String uid}) async {
     final DocumentSnapshot doc = await _userRef.doc(uid).get();
-
-    //print(doc.data());
-
     return UserModel.fromMap(doc.data());
   }
-
-  
 
   Future<bool> signOutUser() async {
     await _auth.signOut();

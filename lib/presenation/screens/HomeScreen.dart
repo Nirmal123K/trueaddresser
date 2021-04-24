@@ -1,5 +1,6 @@
 import 'package:trueaddresser/imports.dart';
 import 'package:trueaddresser/presenation/custom%20ui/UserSignoutDialog.dart';
+import 'package:trueaddresser/presenation/custom%20ui/customUserCard.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -156,52 +157,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       String phoneNumbers = data['phoneNumber'].toString();
                       String addresses = data['address'].toString();
 
-                      return Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Card(
-                          // color: Colors.redAccent,
-
-                          child: PhysicalModel(
-                            color: Colors.white,
-                            shadowColor: Colors.grey,
-                            elevation: 8.0,
-                            borderRadius: BorderRadius.circular(8),
-                            child: Container(
-                              padding: EdgeInsets.all(8.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: [
-                                  Text("UserName : $userNames",
-                                      style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.w600)),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  Text("Phone Number : $phoneNumbers",
-                                      style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.w600)),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  GestureDetector(
-                                    onTap: () {
-                                      MapsLauncher.launchQuery(addresses);
-                                    },
-                                    child: Text("Address : $addresses",
-                                        style: TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.w600)),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                      );
+                      return CustomUserCard(
+                          userName: userNames,
+                          phoneNumber: phoneNumbers,
+                          address: addresses);
                     });
           },
         ));
