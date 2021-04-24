@@ -43,6 +43,7 @@ export 'package:trueaddresser/presenation/custom ui/widgetsUi.dart';
 export 'package:trueaddresser/presenation/custom ui/CustomAlertDialog.dart';
 export 'package:trueaddresser/presenation/custom%20ui/CustomRectengleButton.dart';
 export 'package:trueaddresser/presenation/custom%20ui/CustomTextFiled.dart';
+export 'package:trueaddresser/presenation/custom%20ui/UserGuideDialog.dart';
 
 //Routers
 export 'package:trueaddresser/router/app_router.dart';
