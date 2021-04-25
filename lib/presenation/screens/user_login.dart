@@ -1,6 +1,5 @@
 import 'package:trueaddresser/imports.dart';
 
-
 class UserLogin extends StatefulWidget {
   @override
   _UserLoginState createState() => _UserLoginState();
@@ -46,14 +45,11 @@ class _UserLoginState extends State<UserLogin> {
     var validate = formkey.currentState.validate();
     print("validate ois $validate");
     if (formkey.currentState.validate()) {
-      
       authService.phoneSignIn(
           scaffoldMessenger: _scaffoldKey,
           phoneNumber: userPhoneNumberController.text.trim(),
           verificationComplete: (phoneAuthCredential) {},
           codeSent: (String verificationId, [int forceResendingToken]) async {
-           
-
             Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) => LoginOTPScreen(
                       verficationId: verificationId,
@@ -73,14 +69,15 @@ class _UserLoginState extends State<UserLogin> {
     return ScaffoldMessenger(
       key: _scaffoldKey,
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: HexColor('#f5f5f5'),
         appBar: AppBar(
           elevation: 0.0,
-          backgroundColor: Colors.transparent,
-          title: Text("Log In",
-              style: GoogleFonts.roboto(
+          backgroundColor: HexColor('#f5f5f5'),
+          centerTitle: true,
+          title: Text("welcome back!",
+              style: GoogleFonts.comfortaa(
                   decorationThickness: 5.2,
-                  textStyle: TextStyle(color: Colors.black))),
+                  textStyle: TextStyle(color: HexColor('#642ab6')))),
           leading: new IconButton(
               icon: new Icon(
                 Icons.arrow_back_outlined,
@@ -95,39 +92,19 @@ class _UserLoginState extends State<UserLogin> {
             key: formkey,
             child: Column(
               children: [
-                Align(
-                    alignment: Alignment.topLeft,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 30),
-                      child: Text(
-                        "Welcome back!",
-                        style: GoogleFonts.roboto(fontSize: 16),
-                      ),
-                    )),
-                SizedBox(
-                  height: 05,
-                ),
-                Align(
-                    alignment: Alignment.topLeft,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 30),
-                      child: Text("Please log in to continue!",
-                          style: GoogleFonts.roboto(fontSize: 16)),
-                    )),
-                SizedBox(height: 10),
                 CustomTextFiled(
-                  hintText: "Phone Number",
+                  hintText: "Enter Contact Number",
                   onChange: (value) {},
                   validator: (value) {
                     setState(() {
                       if (value.isEmpty) {
                         _scaffoldKey.currentState.showSnackBar(
-                            errorSnakBar("Phone Number is Empty"));
-                        return 'phone number is empty';
+                            errorSnakBar("Please enter contact number first."));
+                        return null;
                       } else if (value.length != 10) {
                         _scaffoldKey.currentState.showSnackBar(
-                            errorSnakBar("Phone Number is not valid"));
-                        return 'phone number is empty';
+                            errorSnakBar("Please enter valid contact number"));
+                        return null;
                       } else {
                         return null;
                       }

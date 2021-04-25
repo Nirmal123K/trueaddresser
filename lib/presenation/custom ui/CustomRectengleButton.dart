@@ -17,8 +17,8 @@ class CustomRectengleButton extends StatefulWidget {
 
 class _CustomRectengleButtonState extends State<CustomRectengleButton> {
   bool internalButtonOutline;
-  Color rectengleButtonbluecolor = HexColor("#8e00e9");
-  Color rectengleButtonwhitecolor = HexColor("#ffffff");
+  Color rectengleButtonbluecolor = HexColor("#491d7f");
+  Color rectengleButtonwhitecolor = HexColor("#f5f5f5");
   @override
   void initState() {
     internalButtonOutline = widget.buttonOutline;
@@ -39,12 +39,12 @@ class _CustomRectengleButtonState extends State<CustomRectengleButton> {
           border: internalButtonOutline
               ? Border.all()
               : Border.all(color: Colors.transparent),
-          borderRadius: BorderRadius.circular(5),
+          borderRadius: BorderRadius.circular(25),
         ),
         child: Center(
           child: Text(
-            widget.buttonTitle.toUpperCase(),
-            style: GoogleFonts.robotoMono(
+            widget.buttonTitle,
+            style: GoogleFonts.poppins(
               letterSpacing: 1,
               fontSize: 20,
               color: internalButtonOutline ? Colors.black : Colors.white,

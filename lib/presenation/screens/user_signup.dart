@@ -1,7 +1,6 @@
 import 'package:trueaddresser/imports.dart';
 import 'package:trueaddresser/presenation/custom%20ui/CustomTextFiled.dart';
 
-
 class UserSignup extends StatefulWidget {
   @override
   _UserSignupState createState() => _UserSignupState();
@@ -26,68 +25,44 @@ class _UserSignupState extends State<UserSignup> {
     return ScaffoldMessenger(
       key: _scaffoldKey,
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: HexColor('#f5f5f5'),
         //extendBodyBehindAppBar: true,
         appBar: AppBar(
           elevation: 0.0,
-          backgroundColor: Colors.transparent,
-          title: Text("Create Account",
-              style: GoogleFonts.roboto(
+          backgroundColor: HexColor('#f5f5f5'),
+          centerTitle: true,
+          title: Text("welcome to trueaddress",
+              style: GoogleFonts.comfortaa(
                   decorationThickness: 5.2,
-                  textStyle: TextStyle(color: Colors.black))),
+                  textStyle: TextStyle(color: HexColor('#642ab6')))),
           leading: new IconButton(
               icon: new Icon(
                 Icons.arrow_back_outlined,
-                color: Colors.black,
+                color: HexColor('#642ab6'),
               ),
               onPressed: () {
                 Navigator.pop(context, true);
               }),
         ),
         body: SingleChildScrollView(
-          
           child: Container(
             height: MediaQuery.of(context).size.height,
             child: Form(
               key: formkey,
               child: Column(
                 children: [
-                  Align(
-                      alignment: Alignment.topLeft,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 30),
-                        child: Text(
-                          "Sign up to explore real",
-                          style: GoogleFonts.roboto(fontSize: 16),
-                        ),
-                      )),
-                  SizedBox(
-                    height: 05,
-                  ),
-                  Align(
-                      alignment: Alignment.topLeft,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 30),
-                        child: Text(
-                          "Addresses around the world!",
-                          style: GoogleFonts.roboto(fontSize: 16),
-                        ),
-                      )),
-                  SizedBox(
-                    height: 10,
-                  ),
                   CustomTextFiled(
-                    hintText: "UserName",
+                    hintText: "Enter Name",
                     onChange: (value) {},
                     validator: (value) {
                       setState(() {
                         if (value.isEmpty) {
-                          _scaffoldKey.currentState
-                              .showSnackBar(errorSnakBar("username is Empty"));
+                          _scaffoldKey.currentState.showSnackBar(
+                              errorSnakBar("please provide full name."));
                           return 'username is empty';
                         } else if (value.length < 3 || value.length > 8) {
                           _scaffoldKey.currentState.showSnackBar(errorSnakBar(
-                              "Username is not valid (3 to 8 Characters )"));
+                              "user name is not valid (3 to 8 Characters )"));
                         }
                       });
                     },
@@ -97,17 +72,17 @@ class _UserSignupState extends State<UserSignup> {
                   ),
                   SizedBox(height: 10),
                   CustomTextFiled(
-                    hintText: "Phone Number",
+                    hintText: "Enter Contact Number",
                     onChange: null,
                     validator: (value) {
                       setState(() {
                         if (value.isEmpty) {
                           _scaffoldKey.currentState.showSnackBar(
-                              errorSnakBar("Phone Number is Empty"));
+                              errorSnakBar("please provide contact number."));
                           return null;
                         } else if (value.length != 10) {
                           _scaffoldKey.currentState.showSnackBar(
-                              errorSnakBar("Phone Number is not valid"));
+                              errorSnakBar("please provide contact number."));
                         }
                       });
                     },
@@ -117,17 +92,17 @@ class _UserSignupState extends State<UserSignup> {
                   ),
                   SizedBox(height: 10),
                   CustomTextFiled(
-                    hintText: "Address",
+                    hintText: "Enter Address",
                     onChange: null,
                     defaultConfig: false,
                     validator: (value) {
                       if (value.isEmpty) {
-                        _scaffoldKey.currentState
-                            .showSnackBar(errorSnakBar("Address is Empty"));
+                        _scaffoldKey.currentState.showSnackBar(
+                            errorSnakBar("please provide address"));
                         return null;
                       } else if (value.length > 250) {
                         _scaffoldKey.currentState.showSnackBar(errorSnakBar(
-                            "Address is not valid (maximum 250 Characters)"));
+                            "address is not valid (maximum 250 Characters)"));
                       }
                     },
                     height: 100.0,
@@ -150,7 +125,7 @@ class _UserSignupState extends State<UserSignup> {
                         }
                       });
                     },
-                    title: Text("Make Account Private"),
+                    title: Text("keep my account private"),
                   ),
                   SizedBox(height: 20),
                   CustomRectengleButton(

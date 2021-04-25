@@ -26,13 +26,13 @@ class _CustomUserCardState extends State<CustomUserCard> {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(_borderRadius),
               gradient: LinearGradient(
-                  colors: [Color(0xff6DC8F3), Color(0xff73A1F9)],
+                  colors: [HexColor('#ff5da2'), HexColor('#e760bf')],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight),
               boxShadow: [
                 BoxShadow(
-                  color: Color(0xff73A1F9),
-                  blurRadius: 12,
+                  color: HexColor('#f46188'),
+                  blurRadius: 20,
                   offset: Offset(0, 6),
                 ),
               ],
@@ -45,7 +45,7 @@ class _CustomUserCardState extends State<CustomUserCard> {
             child: CustomPaint(
               size: Size(100, 150),
               painter: CustomCardShapePainter(
-                  _borderRadius, Color(0xff6DC8F3), Color(0xff73A1F9)),
+                  _borderRadius, HexColor('#f638dc'), HexColor('#ff94c7')),
             ),
           ),
           Positioned.fill(
@@ -55,55 +55,59 @@ class _CustomUserCardState extends State<CustomUserCard> {
                   child: Icon(
                     Icons.person,
                     color: Colors.white,
-                    size: 100,
+                    size: 60,
                   ),
                   flex: 2,
                 ),
                 Expanded(
-                  flex: 4,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text(widget.userName,
-                          style: GoogleFonts.ptSans(
-                              textStyle: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18))),
-                      Text(widget.phoneNumber,
-                          style: GoogleFonts.ptSans(
-                              textStyle: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.normal,
-                                  fontSize: 16))),
-                      SizedBox(height: 16),
-                      GestureDetector(
-                        onTap: () {
-                          MapsLauncher.launchQuery(widget.address);
-                        },
-                        child: Row(
-                          children: <Widget>[
-                            Icon(
-                              Icons.location_on,
-                              color: Colors.white,
-                              size: 18,
-                            ),
-                            SizedBox(
-                              width: 8,
-                            ),
-                            Flexible(
-                              child: Text(widget.address,
-                                  style: GoogleFonts.ptSans(
-                                      textStyle: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.normal,
-                                          fontSize: 16))),
-                            ),
-                          ],
+                  flex: 6,
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text(widget.userName,
+                            style: GoogleFonts.poppins(
+                                textStyle: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18))),
+                        Text(widget.phoneNumber,
+                            style: GoogleFonts.poppins(
+                                textStyle: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.normal,
+                                    fontSize: 16))),
+                        SizedBox(height: 16),
+                        GestureDetector(
+                          onTap: () {
+                            MapsLauncher.launchQuery(widget.address);
+                          },
+                          child: Row(
+                            children: <Widget>[
+                              Icon(
+                                Icons.location_on,
+                                color: Colors.white,
+                                size: 18,
+                              ),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              Flexible(
+                                child: Text(widget.address,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: GoogleFonts.poppins(
+                                        textStyle: TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.normal,
+                                            fontSize: 16))),
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ],

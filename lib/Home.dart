@@ -37,25 +37,37 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      resizeToAvoidBottomInset: false,
+      backgroundColor: HexColor('#f5f5f5'),
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: HexColor('#f5f5f5'),
         currentIndex: _selectedIndex,
         onTap: onBottomNavigatonBarTap,
-        selectedItemColor: Colors.blueAccent,
-        selectedIconTheme: IconThemeData(color: Colors.blueAccent),
-        selectedFontSize: 18,
+        selectedItemColor: HexColor('#f46188'),
+        selectedIconTheme: IconThemeData(color: HexColor('#491d7f')),
         items: [
           BottomNavigationBarItem(
+              backgroundColor: HexColor('#491d7f'),
+              activeIcon: Icon(
+                Icons.home_outlined,
+                color: HexColor('#f46188'),
+                size: 30,
+              ),
               icon: Icon(
                 Icons.home_outlined,
-                color: Colors.black,
+                color: HexColor('#491d7f'),
                 size: 30,
               ),
               label: "Home"),
           BottomNavigationBarItem(
+              activeIcon: Icon(
+                Icons.person_outline,
+                color: HexColor('#f46188'),
+                size: 30,
+              ),
               icon: Icon(
                 Icons.person_outline,
-                color: Colors.black,
+                color: HexColor('#491d7f'),
                 size: 30,
               ),
               label: "Profile")
