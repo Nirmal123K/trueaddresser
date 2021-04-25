@@ -13,7 +13,7 @@ class _UserProfileState extends State<UserProfile> {
       GlobalKey<ScaffoldMessengerState>();
 
   bool _isLoading = false;
-  bool _isAccouontPrivate = false;
+  bool _isAccouontPrivate;
   String uid;
   String username = "hello";
   String phoneNumber = "Loading";
@@ -21,7 +21,7 @@ class _UserProfileState extends State<UserProfile> {
 
   String updatedUserName;
   String updatedAddress;
-  String updatedIsAccountPrivate = "false";
+  String updatedIsAccountPrivate;
   DateTime _currentDate = DateTime.now();
   @override
   void initState() {
@@ -154,10 +154,13 @@ class _UserProfileState extends State<UserProfile> {
                           onChanged: (value) {
                             setState(() {
                               _isAccouontPrivate = value;
+                            
                               if (value == true) {
-                                updatedAddress = "true";
+                                updatedIsAccountPrivate = "true";
+                                
                               } else {
-                                updatedAddress = "false";
+                                updatedIsAccountPrivate = "false";
+                                
                               }
                             });
                           }),
@@ -183,6 +186,7 @@ class _UserProfileState extends State<UserProfile> {
                             child: CustomRectengleButton(
                                 buttonTitle: "update",
                                 onClick: () {
+                                  print(updatedIsAccountPrivate);
                                   authService
                                       .updateUserData(
                                           uid: uid,
