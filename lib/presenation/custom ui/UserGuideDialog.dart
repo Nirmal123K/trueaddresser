@@ -12,11 +12,11 @@ class UserGuideDialog extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text("Guide",
-                    style: GoogleFonts.ptSans(
+                    style: GoogleFonts.poppins(
                         textStyle: TextStyle(
-                            color: Colors.black,
+                            color: HexColor('#491d7f'),
                             fontWeight: FontWeight.bold,
-                            fontSize: 18))),
+                            fontSize: 16))),
                 SizedBox(
                   height: 20,
                 ),
@@ -24,9 +24,9 @@ class UserGuideDialog extends StatelessWidget {
                     alignment: Alignment.centerLeft,
                     child: Text(
                         " => Please search users with complete phone number",
-                        style: GoogleFonts.ptSans(
+                        style: GoogleFonts.poppins(
                             textStyle: TextStyle(
-                                color: Colors.grey,
+                                color: HexColor('#642ab6'),
                                 fontWeight: FontWeight.bold,
                                 fontSize: 14)))),
                 SizedBox(
@@ -36,9 +36,9 @@ class UserGuideDialog extends StatelessWidget {
                     alignment: Alignment.centerLeft,
                     child: Text(
                         " => Private accounts are hide by default, can request them to access",
-                        style: GoogleFonts.ptSans(
+                        style: GoogleFonts.poppins(
                             textStyle: TextStyle(
-                                color: Colors.grey,
+                                color: HexColor('#642ab6'),
                                 fontWeight: FontWeight.bold,
                                 fontSize: 14)))),
                 SizedBox(
@@ -48,9 +48,9 @@ class UserGuideDialog extends StatelessWidget {
                     alignment: Alignment.centerLeft,
                     child: Text(
                         " => Rock with tapping on address to see locations on map",
-                        style: GoogleFonts.ptSans(
+                        style: GoogleFonts.poppins(
                             textStyle: TextStyle(
-                                color: Colors.grey,
+                                color: HexColor('#642ab6'),
                                 fontWeight: FontWeight.bold,
                                 fontSize: 14)))),
                 SizedBox(

@@ -11,7 +11,7 @@ class _HomeScreenState extends State<HomeScreen> {
   AuthService authService = new AuthService();
   String phoneNumber = "";
 
-  Color tilteTextColor = HexColor("#172047");
+  Color tilteTextColor = HexColor("#491d7f");
   Color customBlueColor = HexColor("#8e00e9");
   Icon customsearchIcon = Icon(
     Icons.search,
@@ -20,23 +20,23 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget customAppBar = RichText(
       text: TextSpan(
           style: new TextStyle(
-            color: Colors.black,
+            color: HexColor("#491d7f"),
           ),
           children: <TextSpan>[
         TextSpan(
             text: "true",
             style: GoogleFonts.comfortaa(
                 textStyle: TextStyle(
-                    color: Colors.black,
+                    color: HexColor("#491d7f"),
                     fontWeight: FontWeight.bold,
-                    fontSize: 25))),
+                    fontSize: 20))),
         TextSpan(
             text: "addresser",
             style: GoogleFonts.comfortaa(
                 textStyle: TextStyle(
-                    color: Colors.black,
+                    color: HexColor("#491d7f"),
                     fontWeight: FontWeight.bold,
-                    fontSize: 22))),
+                    fontSize: 20))),
       ]));
 
   @override
@@ -46,7 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: Colors.white,
-          elevation: 1,
+          elevation: 0.0,
           title: customAppBar,
           actions: <Widget>[
             IconButton(
@@ -56,46 +56,42 @@ class _HomeScreenState extends State<HomeScreen> {
                     if (this.customsearchIcon.icon == Icons.search) {
                       this.customsearchIcon = Icon(
                         Icons.cancel,
-                        color: Colors.black,
+                        color: HexColor("#491d7f"),
                       );
-                      this.customAppBar = Card(
-                        child: TextField(
-                          decoration: InputDecoration(
-                              border: InputBorder.none,
-                              prefixIcon: Icon(Icons.search),
-                              hintText: 'search here...'),
-                          onChanged: (val) {
-                            setState(() {
-                              phoneNumber = val;
-                            });
-                          },
-                        ),
+                      this.customAppBar = CustomTextFiled(
+                        hintText: "search here",
+                        onChange: (val) {
+                          setState(() {
+                            phoneNumber = val;
+                          });
+                        },
+                        icon: Icons.search,
                       );
                     } else {
                       this.customsearchIcon = Icon(
                         Icons.search,
-                        color: Colors.black,
+                        color: HexColor("#491d7f"),
                       );
                       this.customAppBar = RichText(
                           text: TextSpan(
                               style: new TextStyle(
-                                color: Colors.black,
+                                color: HexColor("#491d7f"),
                               ),
                               children: <TextSpan>[
                             TextSpan(
                                 text: "true",
                                 style: GoogleFonts.comfortaa(
                                     textStyle: TextStyle(
-                                        color: Colors.black,
+                                        color: HexColor("#491d7f"),
                                         fontWeight: FontWeight.bold,
-                                        fontSize: 25))),
+                                        fontSize: 20))),
                             TextSpan(
                                 text: "addresser",
                                 style: GoogleFonts.comfortaa(
                                     textStyle: TextStyle(
-                                        color: Colors.black,
+                                        color: HexColor("#491d7f"),
                                         fontWeight: FontWeight.bold,
-                                        fontSize: 22))),
+                                        fontSize: 20))),
                           ]));
                     }
                   });
@@ -103,7 +99,7 @@ class _HomeScreenState extends State<HomeScreen> {
             IconButton(
                 icon: Icon(
                   Icons.info,
-                  color: Colors.lightBlue,
+                  color: HexColor("#491d7f"),
                 ),
                 onPressed: () {
                   showDialog(

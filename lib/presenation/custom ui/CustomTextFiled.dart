@@ -31,8 +31,8 @@ class CustomTextFiled extends StatefulWidget {
 
 class _CustomTextFiledState extends State<CustomTextFiled> {
   bool internalDefaultConfig;
-  Color textfiledcolor = HexColor("#edf1f7");
-  Color texticoncolor = HexColor("#64657b");
+  Color textfiledcolor = HexColor('#eeeeee');
+  Color texticoncolor = HexColor('#642ab6');
   @override
   void initState() {
     internalDefaultConfig = widget.defaultConfig;
@@ -69,7 +69,9 @@ class _CustomTextFiledState extends State<CustomTextFiled> {
                 autofocus: false,
                 validator: widget.validator,
                 onChanged: widget.onChange,
-                style: TextStyle(fontSize: 16),
+                style: GoogleFonts.poppins(
+                    textStyle:
+                        TextStyle(fontSize: 16, color: HexColor('#491d7f'))),
                 minLines: 1,
                 maxLines: internalDefaultConfig ? 1 : 3,
                 decoration: InputDecoration(

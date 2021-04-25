@@ -17,8 +17,8 @@ class CustomRectengleButton extends StatefulWidget {
 
 class _CustomRectengleButtonState extends State<CustomRectengleButton> {
   bool internalButtonOutline;
-  Color rectengleButtonbluecolor = HexColor("#8e00e9");
-  Color rectengleButtonwhitecolor = HexColor("#ffffff");
+  Color rectengleButtonbluecolor = HexColor("#491d7f");
+  Color rectengleButtonwhitecolor = HexColor("#f5f5f5");
   @override
   void initState() {
     internalButtonOutline = widget.buttonOutline;

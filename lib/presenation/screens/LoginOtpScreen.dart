@@ -22,13 +22,15 @@ class _LoginOTPScreenState extends State<LoginOTPScreen> {
     return ScaffoldMessenger(
       key: _scaffoldKey,
       child: Scaffold(
+        backgroundColor: HexColor('#f5f5f5'),
         appBar: AppBar(
           elevation: 0.0,
-          backgroundColor: Colors.transparent,
+          backgroundColor: HexColor('#f5f5f5'),
           centerTitle: true,
           title: Text("verification",
               style: GoogleFonts.comfortaa(
-                  textStyle: TextStyle(color: Colors.black))),
+                  decorationThickness: 5.2,
+                  textStyle: TextStyle(color: HexColor('#642ab6')))),
           leading: new IconButton(
               icon: new Icon(
                 Icons.arrow_back_outlined,

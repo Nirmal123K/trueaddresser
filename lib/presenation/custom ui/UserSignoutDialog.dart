@@ -6,7 +6,7 @@ class UserSignoutDialog extends StatefulWidget {
 }
 
 class _UserSignoutDialogState extends State<UserSignoutDialog> {
-   AuthService authService = new AuthService();
+  AuthService authService = new AuthService();
 
   @override
   Widget build(BuildContext context) {
@@ -14,13 +14,17 @@ class _UserSignoutDialogState extends State<UserSignoutDialog> {
       children: [
         Center(
           child: Container(
-            padding: EdgeInsets.all(5.0),
+            padding: EdgeInsets.all(10.0),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  "Are You sure for Logout",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  "are you sure you want to signout.",
+                  style: GoogleFonts.poppins(
+                      textStyle: TextStyle(
+                          color: HexColor('#491d7f'),
+                          fontWeight: FontWeight.normal,
+                          fontSize: 16)),
                 ),
                 SizedBox(
                   height: 20,

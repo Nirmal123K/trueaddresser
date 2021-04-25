@@ -26,12 +26,12 @@ class _CustomUserCardState extends State<CustomUserCard> {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(_borderRadius),
               gradient: LinearGradient(
-                  colors: [Color(0xff6DC8F3), Color(0xff73A1F9)],
+                  colors: [HexColor('#ff5da2'), HexColor('#e760bf')],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight),
               boxShadow: [
                 BoxShadow(
-                  color: Color(0xff73A1F9),
+                  color: HexColor('#f46188'),
                   blurRadius: 20,
                   offset: Offset(0, 6),
                 ),
@@ -45,7 +45,7 @@ class _CustomUserCardState extends State<CustomUserCard> {
             child: CustomPaint(
               size: Size(100, 150),
               painter: CustomCardShapePainter(
-                  _borderRadius, Color(0xff6DC8F3), Color(0xff73A1F9)),
+                  _borderRadius, HexColor('#f638dc'), HexColor('#ff94c7')),
             ),
           ),
           Positioned.fill(

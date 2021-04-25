@@ -25,20 +25,20 @@ class _UserSignupState extends State<UserSignup> {
     return ScaffoldMessenger(
       key: _scaffoldKey,
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: HexColor('#f5f5f5'),
         //extendBodyBehindAppBar: true,
         appBar: AppBar(
           elevation: 0.0,
-          backgroundColor: Colors.transparent,
+          backgroundColor: HexColor('#f5f5f5'),
           centerTitle: true,
           title: Text("welcome to trueaddress",
               style: GoogleFonts.comfortaa(
                   decorationThickness: 5.2,
-                  textStyle: TextStyle(color: Colors.black))),
+                  textStyle: TextStyle(color: HexColor('#642ab6')))),
           leading: new IconButton(
               icon: new Icon(
                 Icons.arrow_back_outlined,
-                color: Colors.black,
+                color: HexColor('#642ab6'),
               ),
               onPressed: () {
                 Navigator.pop(context, true);

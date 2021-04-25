@@ -10,14 +10,14 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  Color tilteTextColor = HexColor("#172047");
-  Color customBlueColor = HexColor("#8e00e9");
+  Color tilteTextColor = HexColor("#f46188");
+  Color customBlueColor = HexColor("#f46188");
   Color customWhiteColor = HexColor("#ffffff");
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: HexColor('#f5f5f5'),
         appBar: AppBar(
           elevation: 0.0,
           backgroundColor: Colors.transparent,
@@ -42,24 +42,24 @@ class _SplashScreenState extends State<SplashScreen> {
                           style: GoogleFonts.comfortaa(
                               textStyle: TextStyle(
                                   color: customBlueColor,
-                                  fontWeight: FontWeight.bold,
+                                  fontWeight: FontWeight.w900,
                                   fontSize: 40))),
                       TextSpan(
                           text: "addresser",
                           style: GoogleFonts.comfortaa(
                               textStyle: TextStyle(
                                   color: tilteTextColor,
-                                  fontWeight: FontWeight.bold,
+                                  fontWeight: FontWeight.w900,
                                   fontSize: 40))),
                     ])),
                 SizedBox(
                   height: 10,
                 ),
-                Text("Sexplore real addresses around you",
+                Text("explore addresses around you",
                     style: GoogleFonts.poppins(
                         textStyle: TextStyle(
-                            color: tilteTextColor,
-                            fontWeight: FontWeight.bold,
+                            color: HexColor('#491d7f'),
+                            fontWeight: FontWeight.w400,
                             fontSize: 16))),
                 SizedBox(
                   height: 170,
