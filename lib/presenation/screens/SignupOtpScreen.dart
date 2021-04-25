@@ -41,13 +41,15 @@ class _OtpScreenState extends State<OtpScreen> {
     return ScaffoldMessenger(
       key: _scaffoldKey,
       child: Scaffold(
+        backgroundColor: HexColor('#f5f5f5'),
         appBar: AppBar(
           elevation: 0.0,
-          backgroundColor: Colors.transparent,
-          title: Text("Otp Verification",
-              style: GoogleFonts.roboto(
+          backgroundColor: HexColor('#f5f5f5'),
+          centerTitle: true,
+          title: Text("verification",
+              style: GoogleFonts.comfortaa(
                   decorationThickness: 5.2,
-                  textStyle: TextStyle(color: Colors.black))),
+                  textStyle: TextStyle(color: HexColor('#642ab6')))),
           leading: new IconButton(
               icon: new Icon(
                 Icons.arrow_back_outlined,
@@ -97,6 +99,7 @@ class _OtpScreenState extends State<OtpScreen> {
                                       phoneNumber: widget.phoneNumber,
                                       address: widget.address,
                                       isAcoountPrivate: widget.isAccountPrivate,
+                                      likes: 0,
                                       timestamp: _dateTime),
                                   await userRef
                                       .doc(user.uid)

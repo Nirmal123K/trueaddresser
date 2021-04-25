@@ -4,8 +4,9 @@ class UserModel{
   String username;
   String isAcoountPrivate;
   String address;
+  int likes;
   DateTime timestamp;
-  UserModel({this.phoneNumber, this.uid, this.username,this.address,this.timestamp,this.isAcoountPrivate});
+  UserModel({this.phoneNumber, this.uid, this.username,this.address,this.timestamp,this.isAcoountPrivate,this.likes});
   
   Map toMap(UserModel user) { 
     var data = Map<String, dynamic>(); 
@@ -16,6 +17,7 @@ class UserModel{
     data["timestamp"] = user.timestamp;
     data["address"] = user.address;
     data["isAcoountPrivate"] = user.isAcoountPrivate;
+    data["likes"] = user.likes;
   
     return data; 
   } 
@@ -25,6 +27,7 @@ class UserModel{
     this.username = mapData["username"]; 
     this.phoneNumber = mapData["phoneNumber"]; 
     this.address = mapData["address"];
+    this.likes = mapData["likes"];
     this.isAcoountPrivate = mapData["isAcoountPrivate"];
   } 
 }

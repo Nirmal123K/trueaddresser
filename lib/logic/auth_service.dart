@@ -6,6 +6,7 @@ class AuthService {
   FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final _userRef = FirebaseFirestore.instance.collection("users");
+  UserModel _userModel = UserModel();
 
   Stream<String> get onAuthStateChanged => _auth.authStateChanges().map(
         (User user) => user?.uid,
@@ -173,6 +174,37 @@ class AuthService {
   Future<UserModel> getUserFromDB({String uid}) async {
     final DocumentSnapshot doc = await _userRef.doc(uid).get();
     return UserModel.fromMap(doc.data());
+  }
+
+  Future<void> updateUserData(
+      {String uid,
+      String username,
+      String phoneNumber,
+      DateTime timestamp,
+      String address,
+      int likes,
+      String isAccountPrivate}) async {
+    _userModel = UserModel(
+      uid: uid,
+      username: username,
+      phoneNumber: phoneNumber,
+      timestamp: timestamp,
+      address: address,
+      likes: likes,
+      isAcoountPrivate: isAccountPrivate,
+    );
+
+    try {
+      await _userRef.doc(uid).update(_userModel.toMap(_userModel));
+    } on FirebaseAuthException catch (e) {
+      print(e);
+    }
+  }
+
+  Future<void> addUserLikes({String uid, int value}) async {
+    return await _userRef
+        .doc(uid)
+        .update({'likes': FieldValue.increment(value)});
   }
 
   Future<bool> signOutUser() async {
