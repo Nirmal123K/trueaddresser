@@ -156,10 +156,13 @@ class _HomeScreenState extends State<HomeScreen> {
                           data['username'].toString().toUpperCase();
                       String phoneNumbers = data['phoneNumber'].toString();
                       String addresses = data['address'].toString();
-
+                      String userId = data['uid'].toString();
+                      int userLikes = data["likes"];
                       return CustomUserCard(
+                        uid: userId,
                           userName: userNames,
                           phoneNumber: phoneNumbers,
+                          userLikes: userLikes,
                           address: addresses);
                     });
           },

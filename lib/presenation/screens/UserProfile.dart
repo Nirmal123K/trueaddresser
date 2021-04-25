@@ -18,9 +18,8 @@ class _UserProfileState extends State<UserProfile> {
   String username = "hello";
   String phoneNumber = "Loading";
   String address = "Loding";
+  int userLikes;
 
-  String updatedUserName;
-  String updatedAddress;
   String updatedIsAccountPrivate;
   DateTime _currentDate = DateTime.now();
   @override
@@ -62,6 +61,7 @@ class _UserProfileState extends State<UserProfile> {
       username = _currentUser.username;
       phoneNumber = _currentUser.phoneNumber;
       address = _currentUser.address;
+      userLikes = _currentUser.likes;
       _isAccouontPrivate = _currentUser.isAcoountPrivate == 'true';
     });
   }
@@ -192,6 +192,7 @@ class _UserProfileState extends State<UserProfile> {
                                           uid: uid,
                                           username: username,
                                           phoneNumber: phoneNumber,
+                                          likes: userLikes,
                                           address: address,
                                           isAccountPrivate:
                                               updatedIsAccountPrivate,
