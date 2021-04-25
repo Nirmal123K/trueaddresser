@@ -31,23 +31,23 @@ class _UserProfileState extends State<UserProfile> {
   Widget customAppBar = RichText(
       text: TextSpan(
           style: new TextStyle(
-            color: Colors.black,
+            color: HexColor("#491d7f"),
           ),
           children: <TextSpan>[
         TextSpan(
-            text: "True",
-            style: GoogleFonts.robotoCondensed(
+            text: "true",
+            style: GoogleFonts.comfortaa(
                 textStyle: TextStyle(
-                    color: HexColor("#172047"),
+                    color: HexColor("#491d7f"),
                     fontWeight: FontWeight.bold,
-                    fontSize: 30))),
+                    fontSize: 20))),
         TextSpan(
-            text: " Addresser",
-            style: GoogleFonts.robotoCondensed(
+            text: "addresser",
+            style: GoogleFonts.comfortaa(
                 textStyle: TextStyle(
-                    color: HexColor("#8e00e9"),
+                    color: HexColor("#491d7f"),
                     fontWeight: FontWeight.bold,
-                    fontSize: 27))),
+                    fontSize: 20))),
       ]));
 
   getUser() async {
@@ -71,11 +71,12 @@ class _UserProfileState extends State<UserProfile> {
     return ScaffoldMessenger(
       key: _scaffoldKey,
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: HexColor('#f5f5f5'),
         appBar: AppBar(
-          backgroundColor: Colors.transparent,
+          backgroundColor: HexColor('#f5f5f5'),
           elevation: 0.0,
           title: customAppBar,
+          centerTitle: true,
         ),
         body: _isLoading
             ? Container(
@@ -87,15 +88,17 @@ class _UserProfileState extends State<UserProfile> {
                 child: Container(
                     child: Column(
                   children: [
-                    Center(child: Image.asset("assets/person.png", scale: 8)),
+                    Center(child: Image.asset("assets/person.png", scale: 10)),
                     SizedBox(
                       height: 10,
                     ),
                     Center(
-                      child: Text(
-                        username.toUpperCase(),
-                        style: TextStyle(fontSize: 30),
-                      ),
+                      child: Text(username.toUpperCase(),
+                          style: GoogleFonts.poppins(
+                              textStyle: TextStyle(
+                                  color: HexColor('#491d7f'),
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 22))),
                     ),
                     Container(
                       padding: EdgeInsets.all(8),
@@ -154,13 +157,11 @@ class _UserProfileState extends State<UserProfile> {
                           onChanged: (value) {
                             setState(() {
                               _isAccouontPrivate = value;
-                            
+
                               if (value == true) {
                                 updatedIsAccountPrivate = "true";
-                                
                               } else {
                                 updatedIsAccountPrivate = "false";
-                                
                               }
                             });
                           }),

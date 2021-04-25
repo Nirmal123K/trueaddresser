@@ -156,7 +156,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       String userId = data['uid'].toString();
                       int userLikes = data["likes"];
                       return CustomUserCard(
-                        uid: userId,
+                          uid: userId,
                           userName: userNames,
                           phoneNumber: phoneNumbers,
                           userLikes: userLikes,
