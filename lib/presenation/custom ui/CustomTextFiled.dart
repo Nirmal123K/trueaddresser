@@ -52,12 +52,13 @@ class _CustomTextFiledState extends State<CustomTextFiled> {
   Widget build(BuildContext context) {
     return internalPutInitalValue
         ? Container(
-            width: MediaQuery.of(context).size.width,
-            height: internalDefaultConfig ? 60.0 : widget.height,
-            margin: EdgeInsets.only(top: 10, right: 10, left: 10),
-            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-            color: internalEnable ? textfiledcolor : Colors.teal.shade100,
-            child: Row(
+      width: MediaQuery.of(context).size.width,
+      height: internalDefaultConfig ? 60.0 : widget.height,
+      margin: EdgeInsets.fromLTRB(15, 10, 15, 0),
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10), color: textfiledcolor),
+      child: Row(
               children: [
                 Container(
                   child: Icon(
@@ -76,7 +77,9 @@ class _CustomTextFiledState extends State<CustomTextFiled> {
                       autofocus: false,
                       validator: widget.validator,
                       onChanged: widget.onChange,
-                      style: TextStyle(fontSize: 16),
+                      style: GoogleFonts.poppins(
+                          textStyle:
+                          TextStyle(fontSize: 16, color: HexColor('#491d7f'))),
                       minLines: 1,
                       enabled: internalEnable,
                       initialValue: widget.initalText,
