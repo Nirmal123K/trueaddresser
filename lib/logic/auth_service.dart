@@ -176,7 +176,6 @@ class AuthService {
     return UserModel.fromMap(doc.data());
   }
 
-
   Future<void> updateUserData(
       {String uid,
       String username,
@@ -193,9 +192,12 @@ class AuthService {
       isAcoountPrivate: isAccountPrivate,
     );
 
-    await _userRef.doc(uid).update(_userModel.toMap(_userModel));
+    try{
+      await _userRef.doc(uid).update(_userModel.toMap(_userModel));
+    }on FirebaseAuthException catch (e){
+        print(e);
+    }
   }
-
 
   Future<bool> signOutUser() async {
     await _auth.signOut();

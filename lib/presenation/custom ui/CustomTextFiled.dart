@@ -56,7 +56,7 @@ class _CustomTextFiledState extends State<CustomTextFiled> {
             height: internalDefaultConfig ? 60.0 : widget.height,
             margin: EdgeInsets.only(top: 10, right: 10, left: 10),
             padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-            color: textfiledcolor,
+            color: internalEnable ? textfiledcolor : Colors.teal.shade100,
             child: Row(
               children: [
                 Container(

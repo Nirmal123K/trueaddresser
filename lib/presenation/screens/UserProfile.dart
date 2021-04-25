@@ -1,5 +1,4 @@
 import 'package:trueaddresser/imports.dart';
-import 'package:trueaddresser/presenation/custom%20ui/CustomUpdateTextFiled.dart';
 
 class UserProfile extends StatefulWidget {
   @override
@@ -15,10 +14,15 @@ class _UserProfileState extends State<UserProfile> {
 
   bool _isLoading = false;
   bool _isAccouontPrivate = false;
+  String uid;
   String username = "hello";
   String phoneNumber = "Loading";
   String address = "Loding";
 
+  String updatedUserName;
+  String updatedAddress;
+  String updatedIsAccountPrivate = "false";
+  DateTime _currentDate = DateTime.now();
   @override
   void initState() {
     getUser();
@@ -54,6 +58,7 @@ class _UserProfileState extends State<UserProfile> {
     _currentUser = userModel;
     setState(() {
       _isLoading = false;
+      uid = _currentUser.uid;
       username = _currentUser.username;
       phoneNumber = _currentUser.phoneNumber;
       address = _currentUser.address;
@@ -96,7 +101,9 @@ class _UserProfileState extends State<UserProfile> {
                       padding: EdgeInsets.all(8),
                       child: CustomTextFiled(
                         icon: Icons.person,
-                        onChange: null,
+                        onChange: (value) {
+                          username = value;
+                        },
                         hintText: username,
                         textInputype: TextInputType.text,
                         textEditingController: null,
@@ -107,8 +114,9 @@ class _UserProfileState extends State<UserProfile> {
                     Container(
                       padding: EdgeInsets.all(8),
                       child: GestureDetector(
-                        onTap: (){
-                          _scaffoldKey.currentState.showSnackBar(errorSnakBar("Phone Number can't Edit"));
+                        onTap: () {
+                          _scaffoldKey.currentState.showSnackBar(
+                              errorSnakBar("Phone Number can't Edit"));
                         },
                         child: CustomTextFiled(
                           icon: Icons.phone,
@@ -126,7 +134,9 @@ class _UserProfileState extends State<UserProfile> {
                       padding: EdgeInsets.all(8),
                       child: CustomTextFiled(
                         icon: Icons.person,
-                        onChange: null,
+                        onChange: (value) {
+                          address = value;
+                        },
                         hintText: address,
                         defaultConfig: false,
                         height: 100.0,
@@ -145,7 +155,10 @@ class _UserProfileState extends State<UserProfile> {
                             setState(() {
                               _isAccouontPrivate = value;
                               if (value == true) {
-                              } else {}
+                                updatedAddress = "true";
+                              } else {
+                                updatedAddress = "false";
+                              }
                             });
                           }),
                     ),
@@ -168,7 +181,26 @@ class _UserProfileState extends State<UserProfile> {
                         Container(
                             width: 150,
                             child: CustomRectengleButton(
-                                buttonTitle: "update", onClick: () {})),
+                                buttonTitle: "update",
+                                onClick: () {
+                                  authService
+                                      .updateUserData(
+                                          uid: uid,
+                                          username: username,
+                                          phoneNumber: phoneNumber,
+                                          address: address,
+                                          isAccountPrivate:
+                                              updatedIsAccountPrivate,
+                                          timestamp: _currentDate)
+                                      .then((value) => {
+                                            Navigator.pushAndRemoveUntil(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        Home()),
+                                                (route) => false)
+                                          });
+                                })),
                       ],
                     ),
                   ],
