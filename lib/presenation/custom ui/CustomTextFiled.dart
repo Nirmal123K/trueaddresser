@@ -45,9 +45,10 @@ class _CustomTextFiledState extends State<CustomTextFiled> {
     return Container(
       width: MediaQuery.of(context).size.width,
       height: internalDefaultConfig ? 60.0 : widget.height,
-      margin: EdgeInsets.only(top: 10, right: 10, left: 10),
-      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-      color: textfiledcolor,
+      margin: EdgeInsets.fromLTRB(15, 10, 15, 0),
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10), color: textfiledcolor),
       child: Row(
         children: [
           Container(
@@ -74,7 +75,6 @@ class _CustomTextFiledState extends State<CustomTextFiled> {
                 decoration: InputDecoration(
                   hintText: widget.hintText,
                   counterText: "",
-                
                   border: InputBorder.none,
                 ),
               ),

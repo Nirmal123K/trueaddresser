@@ -25,14 +25,14 @@ class _HomeScreenState extends State<HomeScreen> {
           children: <TextSpan>[
         TextSpan(
             text: "true",
-            style: GoogleFonts.poppins(
+            style: GoogleFonts.comfortaa(
                 textStyle: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
                     fontSize: 25))),
         TextSpan(
-            text: " addresser",
-            style: GoogleFonts.poppins(
+            text: "addresser",
+            style: GoogleFonts.comfortaa(
                 textStyle: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
@@ -42,6 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        resizeToAvoidBottomInset: false,
         backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: Colors.white,
@@ -62,7 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           decoration: InputDecoration(
                               border: InputBorder.none,
                               prefixIcon: Icon(Icons.search),
-                              hintText: 'Search...'),
+                              hintText: 'search here...'),
                           onChanged: (val) {
                             setState(() {
                               phoneNumber = val;
@@ -83,14 +84,14 @@ class _HomeScreenState extends State<HomeScreen> {
                               children: <TextSpan>[
                             TextSpan(
                                 text: "true",
-                                style: GoogleFonts.poppins(
+                                style: GoogleFonts.comfortaa(
                                     textStyle: TextStyle(
                                         color: Colors.black,
                                         fontWeight: FontWeight.bold,
                                         fontSize: 25))),
                             TextSpan(
-                                text: " addresser",
-                                style: GoogleFonts.poppins(
+                                text: "addresser",
+                                style: GoogleFonts.comfortaa(
                                     textStyle: TextStyle(
                                         color: Colors.black,
                                         fontWeight: FontWeight.bold,

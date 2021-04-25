@@ -10,12 +10,9 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-
   Color tilteTextColor = HexColor("#172047");
   Color customBlueColor = HexColor("#8e00e9");
   Color customWhiteColor = HexColor("#ffffff");
-
-  
 
   @override
   Widget build(BuildContext context) {
@@ -41,15 +38,15 @@ class _SplashScreenState extends State<SplashScreen> {
                         ),
                         children: <TextSpan>[
                       TextSpan(
-                          text: "True",
-                          style: GoogleFonts.robotoCondensed(
+                          text: "true",
+                          style: GoogleFonts.comfortaa(
                               textStyle: TextStyle(
                                   color: customBlueColor,
                                   fontWeight: FontWeight.bold,
                                   fontSize: 40))),
                       TextSpan(
-                          text: " Addresser",
-                          style: GoogleFonts.robotoCondensed(
+                          text: "addresser",
+                          style: GoogleFonts.comfortaa(
                               textStyle: TextStyle(
                                   color: tilteTextColor,
                                   fontWeight: FontWeight.bold,
@@ -58,17 +55,17 @@ class _SplashScreenState extends State<SplashScreen> {
                 SizedBox(
                   height: 10,
                 ),
-                Text("Search Real Addresses",
-                    style: GoogleFonts.robotoCondensed(
+                Text("Sexplore real addresses around you",
+                    style: GoogleFonts.poppins(
                         textStyle: TextStyle(
                             color: tilteTextColor,
                             fontWeight: FontWeight.bold,
-                            fontSize: 20))),
+                            fontSize: 16))),
                 SizedBox(
                   height: 170,
                 ),
                 CustomRectengleButton(
-                    buttonTitle: "create an account",
+                    buttonTitle: "create new account",
                     onClick: () {
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => UserSignup()));
@@ -77,7 +74,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   height: 20,
                 ),
                 CustomRectengleButton(
-                    buttonTitle: "log in ",
+                    buttonTitle: "log in",
                     buttonOutline: true,
                     onClick: () {
                       Navigator.of(context).push(

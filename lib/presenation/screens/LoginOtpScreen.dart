@@ -16,7 +16,7 @@ class _LoginOTPScreenState extends State<LoginOTPScreen> {
   final userRef = FirebaseFirestore.instance.collection("users");
   final GlobalKey<ScaffoldMessengerState> _scaffoldKey =
       GlobalKey<ScaffoldMessengerState>();
- 
+
   @override
   Widget build(BuildContext context) {
     return ScaffoldMessenger(
@@ -25,9 +25,9 @@ class _LoginOTPScreenState extends State<LoginOTPScreen> {
         appBar: AppBar(
           elevation: 0.0,
           backgroundColor: Colors.transparent,
-          title: Text("Otp Verification",
-              style: GoogleFonts.roboto(
-                  decorationThickness: 5.2,
+          centerTitle: true,
+          title: Text("verification",
+              style: GoogleFonts.comfortaa(
                   textStyle: TextStyle(color: Colors.black))),
           leading: new IconButton(
               icon: new Icon(
@@ -41,26 +41,13 @@ class _LoginOTPScreenState extends State<LoginOTPScreen> {
         body: Container(
           child: Column(
             children: [
-              Align(
-                  alignment: Alignment.topLeft,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 30),
-                    child: Text(
-                      "Verify Otp",
-                      style: GoogleFonts.roboto(fontSize: 16),
-                    ),
-                  )),
-              SizedBox(
-                height: 10,
-              ),
               CustomTextFiled(
-                hintText: "Enter Otp",
+                hintText: "Enter OTP",
                 onChange: null,
                 icon: Icons.message,
                 textInputype: TextInputType.number,
                 textEditingController: userOtpController,
               ),
-            
               SizedBox(
                 height: 20,
               ),
@@ -71,15 +58,12 @@ class _LoginOTPScreenState extends State<LoginOTPScreen> {
                         .verifyOTP(widget.verficationId,
                             userOtpController.text.trim(), context)
                         .then((user) => {
-                             
                               if (user != null)
                                 {
                                   Navigator.pushAndRemoveUntil(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => Home(
-                                                
-                                              )),
+                                          builder: (context) => Home()),
                                       (route) => false)
                                 }
                               else
@@ -96,6 +80,4 @@ class _LoginOTPScreenState extends State<LoginOTPScreen> {
       ),
     );
   }
-
-
 }

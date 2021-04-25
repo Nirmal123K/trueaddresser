@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       auth: AuthService(),
       db: FirebaseFirestore.instance,
       child: MaterialApp(
-        title: 'Flutter Demo',
+        title: 'trueaddress',
         theme: ThemeData(
           // primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -73,7 +73,7 @@ class _AppStartState extends State<AppStart> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'FlutterDemo',
+      title: 'trueaddresss',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
