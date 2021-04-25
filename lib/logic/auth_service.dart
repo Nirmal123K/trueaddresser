@@ -182,6 +182,7 @@ class AuthService {
       String phoneNumber,
       DateTime timestamp,
       String address,
+      int likes,
       String isAccountPrivate}) async {
     _userModel = UserModel(
       uid: uid,
@@ -189,14 +190,21 @@ class AuthService {
       phoneNumber: phoneNumber,
       timestamp: timestamp,
       address: address,
+      likes: likes,
       isAcoountPrivate: isAccountPrivate,
     );
 
-    try{
+    try {
       await _userRef.doc(uid).update(_userModel.toMap(_userModel));
-    }on FirebaseAuthException catch (e){
-        print(e);
+    } on FirebaseAuthException catch (e) {
+      print(e);
     }
+  }
+
+  Future<void> addUserLikes({String uid, int value}) async {
+    return await _userRef
+        .doc(uid)
+        .update({'likes': FieldValue.increment(value)});
   }
 
   Future<bool> signOutUser() async {

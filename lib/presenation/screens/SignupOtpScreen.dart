@@ -97,6 +97,7 @@ class _OtpScreenState extends State<OtpScreen> {
                                       phoneNumber: widget.phoneNumber,
                                       address: widget.address,
                                       isAcoountPrivate: widget.isAccountPrivate,
+                                      likes: 0,
                                       timestamp: _dateTime),
                                   await userRef
                                       .doc(user.uid)
