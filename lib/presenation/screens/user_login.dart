@@ -136,8 +136,7 @@ class _UserLoginState extends State<UserLogin> {
             ),
           ),
         ),
-      ),
-    );
+      );
   }
 
   @override
