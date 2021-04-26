@@ -8,11 +8,12 @@ class UserLogin extends StatefulWidget {
 class _UserLoginState extends State<UserLogin> {
   TextEditingController userPhoneNumberController = new TextEditingController();
 
-  bool isLoading = false;
-  GlobalKey<FormState> formkey = GlobalKey<FormState>();
+  bool _isLoading = false;
+  final formkey = GlobalKey<FormState>();
   final GlobalKey<ScaffoldMessengerState> _scaffoldKey =
       GlobalKey<ScaffoldMessengerState>();
   AuthService authService = new AuthService();
+  var phone;
 
   // login() async {
   //   if (formkey.currentState.validate()) {
@@ -45,11 +46,17 @@ class _UserLoginState extends State<UserLogin> {
     var validate = formkey.currentState.validate();
     print("validate ois $validate");
     if (formkey.currentState.validate()) {
+      setState(() {
+        _isLoading = true;
+      });
       authService.phoneSignIn(
           scaffoldMessenger: _scaffoldKey,
           phoneNumber: userPhoneNumberController.text.trim(),
           verificationComplete: (phoneAuthCredential) {},
           codeSent: (String verificationId, [int forceResendingToken]) async {
+            setState(() {
+              _isLoading = false;
+            });
             Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) => LoginOTPScreen(
                       verficationId: verificationId,
@@ -60,7 +67,9 @@ class _UserLoginState extends State<UserLogin> {
           },
           context: context);
     } else {
-      Navigator.pop(context);
+      setState(() {
+        _isLoading = false;
+      });
     }
   }
 
@@ -87,8 +96,13 @@ class _UserLoginState extends State<UserLogin> {
                 Navigator.of(context).pop();
               }),
         ),
-        body: Container(
-          child: Form(
+        body:  _isLoading
+            ? Container(
+          child: Center(
+            child: CircularProgressIndicator(),
+          ),
+        )
+            :  Form(
             key: formkey,
             child: Column(
               children: [

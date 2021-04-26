@@ -8,17 +8,51 @@ class UserSignup extends StatefulWidget {
 
 class _UserSignupState extends State<UserSignup> {
   String userUid;
-  GlobalKey<FormState> formkey = GlobalKey<FormState>();
+  GlobalKey<FormState> _formkey = GlobalKey<FormState>();
   final DateTime timestamp = DateTime.now();
   final GlobalKey<ScaffoldMessengerState> _scaffoldKey =
       GlobalKey<ScaffoldMessengerState>();
   AuthService authService = new AuthService();
   bool isPrivate = false;
   var accountPrivate = 'false';
+  bool _isLoading = false;
 
   TextEditingController usernameController = new TextEditingController();
   TextEditingController userPhoneNumberController = new TextEditingController();
   TextEditingController userAddressController = new TextEditingController();
+
+  userSignUp() async {
+
+    if (_formkey.currentState.validate()) {
+      setState(() {
+        _isLoading = true;
+      });
+      await authService.phoneSignup(
+          phoneNumber: userPhoneNumberController.text.trim(),
+          verificationFailed: (error) {
+            print(error);
+          },
+          codeSent: (String verificationId, [int forceResendingToken]) {
+            setState(() {
+              _isLoading = false;
+            });
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => OtpScreen(
+                          username: usernameController.text.trim(),
+                          phoneNumber: userPhoneNumberController.text.trim(),
+                          address: userAddressController.text,
+                          isAccountPrivate: accountPrivate.toString(),
+                          verificationId: verificationId,
+                        )));
+          });
+    } else {
+      setState(() {
+        _isLoading = false;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +78,13 @@ class _UserSignupState extends State<UserSignup> {
                 Navigator.pop(context, true);
               }),
         ),
-        body: SingleChildScrollView(
+        body:  _isLoading
+            ? Container(
+          child: Center(
+            child: CircularProgressIndicator(),
+          ),
+        )
+            : SingleChildScrollView(
           child: Container(
             height: MediaQuery.of(context).size.height,
             child: Form(
@@ -131,34 +171,7 @@ class _UserSignupState extends State<UserSignup> {
                   CustomRectengleButton(
                       buttonTitle: "sign up",
                       onClick: () async {
-                        // showLoaderDialog(context);
-                        if (formkey.currentState.validate()) {
-                          await authService.phoneSignup(
-                              phoneNumber:
-                                  userPhoneNumberController.text.trim(),
-                              verificationFailed: (error) {
-                                print(error);
-                              },
-                              codeSent: (String verificationId,
-                                  [int forceResendingToken]) {
-                                print(verificationId);
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => OtpScreen(
-                                              username: usernameController.text
-                                                  .trim(),
-                                              phoneNumber:
-                                                  userPhoneNumberController.text
-                                                      .trim(),
-                                              address:
-                                                  userAddressController.text,
-                                              isAccountPrivate:
-                                                  accountPrivate.toString(),
-                                              verificationId: verificationId,
-                                            )));
-                              });
-                        } else {}
+                        userSignUp();
                       })
                 ],
               ),
