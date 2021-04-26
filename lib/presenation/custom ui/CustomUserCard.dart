@@ -62,6 +62,7 @@ class _CustomUserCardState extends State<CustomUserCard> {
                       _authService.addUserLikes(
                         uid: widget.uid,
                         value: -1,
+                        
                       ),
                       isLikeButtonPressed = false
                     }

@@ -115,7 +115,7 @@ class _CustomTextFiledState extends State<CustomTextFiled> {
                     child: TextFormField(
                       keyboardType: widget.textInputype,
                       controller: widget.textEditingController,
-                      autofocus: false,
+                      
                       validator: widget.validator,
                       onChanged: widget.onChange,
                       style: TextStyle(fontSize: 16),

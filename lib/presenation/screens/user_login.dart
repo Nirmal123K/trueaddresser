@@ -1,6 +1,5 @@
 import 'package:trueaddresser/imports.dart';
 
-
 class UserLogin extends StatefulWidget {
   @override
   _UserLoginState createState() => _UserLoginState();
@@ -9,13 +8,15 @@ class UserLogin extends StatefulWidget {
 class _UserLoginState extends State<UserLogin> {
   TextEditingController userPhoneNumberController = new TextEditingController();
 
-  bool isLoading = false;
-  GlobalKey<FormState> formkey = GlobalKey<FormState>();
+  bool _isLoading = false;
+  final formkey = GlobalKey<FormState>();
   final GlobalKey<ScaffoldMessengerState> _scaffoldKey =
       GlobalKey<ScaffoldMessengerState>();
   AuthService authService = new AuthService();
+  var phone;
 
   // login() async {
+  //
   //   if (formkey.currentState.validate()) {
   //     //formkey.currentState.save();
   //     showLoaderDialog(context);
@@ -44,16 +45,19 @@ class _UserLoginState extends State<UserLogin> {
 
   login() async {
     var validate = formkey.currentState.validate();
-    print("validate ois $validate");
+
     if (formkey.currentState.validate()) {
-      
+      setState(() {
+        _isLoading = true;
+      });
       authService.phoneSignIn(
           scaffoldMessenger: _scaffoldKey,
           phoneNumber: userPhoneNumberController.text.trim(),
           verificationComplete: (phoneAuthCredential) {},
           codeSent: (String verificationId, [int forceResendingToken]) async {
-           
-
+            setState(() {
+              _isLoading = false;
+            });
             Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) => LoginOTPScreen(
                       verficationId: verificationId,
@@ -64,7 +68,9 @@ class _UserLoginState extends State<UserLogin> {
           },
           context: context);
     } else {
-      Navigator.pop(context);
+      setState(() {
+        _isLoading = false;
+      });
     }
   }
 
@@ -90,61 +96,67 @@ class _UserLoginState extends State<UserLogin> {
                 Navigator.of(context).pop();
               }),
         ),
-        body: Container(
-          child: Form(
-            key: formkey,
-            child: Column(
-              children: [
-                Align(
-                    alignment: Alignment.topLeft,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 30),
-                      child: Text(
-                        "Welcome back!",
-                        style: GoogleFonts.roboto(fontSize: 16),
+        body: _isLoading
+            ? Container(
+                child: Center(
+                  child: CircularProgressIndicator(),
+                ),
+              )
+            : Form(
+                key: formkey,
+                child: Container(
+                  child: Column(
+                    children: [
+                      Align(
+                          alignment: Alignment.topLeft,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 30),
+                            child: Text(
+                              "Welcome back!",
+                              style: GoogleFonts.roboto(fontSize: 16),
+                            ),
+                          )),
+                      SizedBox(
+                        height: 05,
                       ),
-                    )),
-                SizedBox(
-                  height: 05,
+                      Align(
+                          alignment: Alignment.topLeft,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 30),
+                            child: Text("Please log in to continue!",
+                                style: GoogleFonts.roboto(fontSize: 16)),
+                          )),
+                      SizedBox(height: 10),
+                      CustomTextFiled(
+                        hintText: "Phone Number",
+                        onChange: (value) {},
+                        validator: (value) {
+                          setState(() {
+                            if (value.isEmpty) {
+                              _scaffoldKey.currentState.showSnackBar(
+                                  errorSnakBar("Phone Number is Empty"));
+                              return 'phone number is empty';
+                            } else if (value.length != 10) {
+                              _scaffoldKey.currentState.showSnackBar(
+                                  errorSnakBar("Phone Number is not valid"));
+                              return 'phone number is empty';
+                            } else {
+                              return null;
+                            }
+                          });
+                        },
+                        icon: Icons.phone,
+                        textInputype: TextInputType.phone,
+                        textEditingController: userPhoneNumberController,
+                      ),
+                      SizedBox(height: 30),
+                      CustomRectengleButton(
+                          buttonTitle: "log in", onClick: () => login()),
+                      Spacer()
+                    ],
+                  ),
                 ),
-                Align(
-                    alignment: Alignment.topLeft,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 30),
-                      child: Text("Please log in to continue!",
-                          style: GoogleFonts.roboto(fontSize: 16)),
-                    )),
-                SizedBox(height: 10),
-                CustomTextFiled(
-                  hintText: "Phone Number",
-                  onChange: (value) {},
-                  validator: (value) {
-                    setState(() {
-                      if (value.isEmpty) {
-                        _scaffoldKey.currentState.showSnackBar(
-                            errorSnakBar("Phone Number is Empty"));
-                        return 'phone number is empty';
-                      } else if (value.length != 10) {
-                        _scaffoldKey.currentState.showSnackBar(
-                            errorSnakBar("Phone Number is not valid"));
-                        return 'phone number is empty';
-                      } else {
-                        return null;
-                      }
-                    });
-                  },
-                  icon: Icons.phone,
-                  textInputype: TextInputType.phone,
-                  textEditingController: userPhoneNumberController,
-                ),
-                SizedBox(height: 30),
-                CustomRectengleButton(
-                    buttonTitle: "log in", onClick: () => login()),
-                Spacer()
-              ],
-            ),
-          ),
-        ),
+              ),
       ),
     );
   }
