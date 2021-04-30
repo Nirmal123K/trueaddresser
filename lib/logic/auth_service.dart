@@ -22,6 +22,17 @@ class AuthService {
     return _auth.currentUser;
   }
 
+  Future deleteUser(String uid) async {
+    try {
+      User user = _auth.currentUser;
+      await _userRef.doc(uid).delete();
+      user.delete();
+     
+    } on FirebaseAuthException catch (e) {
+      print(e);
+    }
+  }
+
   Future<User> signupEmail({
     String email,
     String password,

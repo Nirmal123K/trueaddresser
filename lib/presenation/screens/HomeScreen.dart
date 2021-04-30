@@ -59,6 +59,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         color: HexColor("#491d7f"),
                       );
                       this.customAppBar = CustomTextFiled(
+                        textEditingController: null,
+                        textInputype: TextInputType.number,
                         hintText: "search here",
                         onChange: (val) {
                           setState(() {

@@ -16,6 +16,7 @@ class _UserLoginState extends State<UserLogin> {
   var phone;
 
   // login() async {
+  //
   //   if (formkey.currentState.validate()) {
   //     //formkey.currentState.save();
   //     showLoaderDialog(context);
@@ -44,7 +45,7 @@ class _UserLoginState extends State<UserLogin> {
 
   login() async {
     var validate = formkey.currentState.validate();
-    print("validate ois $validate");
+
     if (formkey.currentState.validate()) {
       setState(() {
         _isLoading = true;
@@ -96,47 +97,69 @@ class _UserLoginState extends State<UserLogin> {
                 Navigator.of(context).pop();
               }),
         ),
-        body:  _isLoading
+        body: _isLoading
             ? Container(
-          child: Center(
-            child: CircularProgressIndicator(),
-          ),
-        )
-            :  Form(
-            key: formkey,
-            child: Column(
-              children: [
-                CustomTextFiled(
-                  hintText: "Enter Contact Number",
-                  onChange: (value) {},
-                  validator: (value) {
-                    setState(() {
-                      if (value.isEmpty) {
-                        _scaffoldKey.currentState.showSnackBar(
-                            errorSnakBar("Please enter contact number first."));
-                        return null;
-                      } else if (value.length != 10) {
-                        _scaffoldKey.currentState.showSnackBar(
-                            errorSnakBar("Please enter valid contact number"));
-                        return null;
-                      } else {
-                        return null;
-                      }
-                    });
-                  },
-                  icon: Icons.phone,
-                  textInputype: TextInputType.phone,
-                  textEditingController: userPhoneNumberController,
+                child: Center(
+                  child: CircularProgressIndicator(),
                 ),
-                SizedBox(height: 30),
-                CustomRectengleButton(
-                    buttonTitle: "log in", onClick: () => login()),
-                Spacer()
-              ],
-            ),
-          ),
-        ),
-      );
+              )
+            : Form(
+                key: formkey,
+                child: Container(
+                  child: Column(
+                    children: [
+                      Align(
+                          alignment: Alignment.topLeft,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 30),
+                            child: Text(
+                              "Welcome back!",
+                              style: GoogleFonts.roboto(fontSize: 16),
+                            ),
+                          )),
+                      SizedBox(
+                        height: 05,
+                      ),
+                      Align(
+                          alignment: Alignment.topLeft,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 30),
+                            child: Text("Please log in to continue!",
+                                style: GoogleFonts.roboto(fontSize: 16)),
+                          )),
+                      SizedBox(height: 10),
+                      CustomTextFiled(
+                        hintText: "Phone Number",
+                        onChange: (value) {},
+                        validator: (value) {
+                          setState(() {
+                            if (value.isEmpty) {
+                              _scaffoldKey.currentState.showSnackBar(
+                                  errorSnakBar("Phone Number is Empty"));
+                              return 'phone number is empty';
+                            } else if (value.length != 10) {
+                              _scaffoldKey.currentState.showSnackBar(
+                                  errorSnakBar("Phone Number is not valid"));
+                              return 'phone number is empty';
+                            } else {
+                              return null;
+                            }
+                          });
+                        },
+                        icon: Icons.phone,
+                        textInputype: TextInputType.phone,
+                        textEditingController: userPhoneNumberController,
+                      ),
+                      SizedBox(height: 30),
+                      CustomRectengleButton(
+                          buttonTitle: "log in", onClick: () => login()),
+                      Spacer()
+                    ],
+                  ),
+                ),
+              ),
+      ),
+    );
   }
 
   @override

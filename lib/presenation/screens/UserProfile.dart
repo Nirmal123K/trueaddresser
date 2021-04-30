@@ -1,4 +1,5 @@
 import 'package:trueaddresser/imports.dart';
+import 'package:trueaddresser/presenation/custom%20ui/UserDeleteDialog.dart';
 
 class UserProfile extends StatefulWidget {
   @override
@@ -77,6 +78,13 @@ class _UserProfileState extends State<UserProfile> {
           elevation: 0.0,
           title: customAppBar,
           centerTitle: true,
+          actions: [
+            IconButton(icon: Icon(Icons.delete,color: Colors.red,), onPressed: (){
+              showDialog(context: context, builder: (context){
+                return UserDeleteDialog(userUid: uid,);
+              });
+            })
+          ],
         ),
         body: _isLoading
             ? Container(

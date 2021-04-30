@@ -1,6 +1,6 @@
 import 'dart:ui' as ui;
-import 'package:flutter/services.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:share/share.dart';
 import 'package:trueaddresser/imports.dart';
 
 class CustomUserCard extends StatefulWidget {
@@ -28,6 +28,7 @@ class _CustomUserCardState extends State<CustomUserCard> {
   String internalUserLikes;
   int likes = 0;
   AuthService _authService = AuthService();
+  
 
   @override
   void initState() {
@@ -37,6 +38,10 @@ class _CustomUserCardState extends State<CustomUserCard> {
 
   @override
   Widget build(BuildContext context) {
+    String userName = widget.userName;
+    String phoneNumbers = widget.phoneNumber;
+    String addresses = widget.address;
+    String shareUserDetail = "Name : $userName \nPhoneNumber : +91$phoneNumbers \nAddress : $addresses ";
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Slidable(
@@ -47,43 +52,14 @@ class _CustomUserCardState extends State<CustomUserCard> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               IconSlideAction(
-                caption: 'Like' + internalUserLikes,
-                //color: Colors.blue,
-
-                closeOnTap: false,
-                iconWidget: Icon(
-                  Icons.favorite_rounded,
-                  color: isLikeButtonPressed ? Colors.red : Colors.black,
-                ),
-                onTap: () => {
-                  if (isLikeButtonPressed)
-                    {
-                      likes = likes - 1,
-                      _authService.addUserLikes(
-                        uid: widget.uid,
-                        value: -1,
-                      ),
-                      isLikeButtonPressed = false
-                    }
-                  else
-                    {
-                      likes = likes + 1,
-                      _authService.addUserLikes(
-                        uid: widget.uid,
-                        value: 1,
-                      ),
-                      isLikeButtonPressed = true
-                    }
-                },
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              IconSlideAction(
                 caption: 'Share',
                 // color: Colors.indigo,
                 icon: Icons.share,
-                onTap: () => {},
+                closeOnTap: false,
+                onTap: () => {
+                  
+                  Share.share(shareUserDetail)
+                },
               ),
             ],
           ),
@@ -95,13 +71,13 @@ class _CustomUserCardState extends State<CustomUserCard> {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(_borderRadius),
                 gradient: LinearGradient(
-                    colors: [HexColor('#ff5da2'), HexColor('#e760bf')],
+                    colors: [HexColor('##1b7fbd'), HexColor('#7ad9f5')],
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight),
                 boxShadow: [
                   BoxShadow(
-                    color: HexColor('#f46188'),
-                    blurRadius: 20,
+                    color: HexColor('#7ad9f5'),
+                    blurRadius: 5,
                     offset: Offset(0, 6),
                   ),
                 ],
@@ -114,7 +90,7 @@ class _CustomUserCardState extends State<CustomUserCard> {
               child: CustomPaint(
                 size: Size(100, 150),
                 painter: CustomCardShapePainter(
-                    _borderRadius, HexColor('#f638dc'), HexColor('#ff94c7')),
+                    _borderRadius, HexColor('####2794eb'), HexColor('#23eae6')),
               ),
             ),
             Positioned.fill(
