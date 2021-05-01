@@ -7,9 +7,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   String uid;
-  String _username;
   String phoneNumber = "";
-  UserModel _currentUser;
 
   AuthService authService = new AuthService();
   int _selectedIndex = 0;

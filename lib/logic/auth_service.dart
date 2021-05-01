@@ -27,7 +27,6 @@ class AuthService {
       User user = _auth.currentUser;
       await _userRef.doc(uid).delete();
       user.delete();
-     
     } on FirebaseAuthException catch (e) {
       print(e);
     }

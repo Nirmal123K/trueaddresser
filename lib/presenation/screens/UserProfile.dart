@@ -79,11 +79,20 @@ class _UserProfileState extends State<UserProfile> {
           title: customAppBar,
           centerTitle: true,
           actions: [
-            IconButton(icon: Icon(Icons.delete,color: Colors.red,), onPressed: (){
-              showDialog(context: context, builder: (context){
-                return UserDeleteDialog(userUid: uid,);
-              });
-            })
+            IconButton(
+                icon: Icon(
+                  Icons.delete,
+                  color: Colors.red,
+                ),
+                onPressed: () {
+                  showDialog(
+                      context: context,
+                      builder: (context) {
+                        return UserDeleteDialog(
+                          userUid: uid,
+                        );
+                      });
+                })
           ],
         ),
         body: _isLoading
@@ -142,21 +151,21 @@ class _UserProfileState extends State<UserProfile> {
                       ),
                     ),
                     Container(
-                      padding: EdgeInsets.all(8),
-                      child: CustomTextFiled(
-                        icon: Icons.person,
-                        onChange: (value) {
-                          address = value;
-                        },
-                        hintText: address,
-                        defaultConfig: false,
-                        height: 100.0,
-                        textInputype: TextInputType.text,
-                        textEditingController: null,
-                        putInitalValue: true,
-                        initalText: address,
-                      ),
-                    ),
+                            padding: EdgeInsets.all(8),
+                            child: CustomTextFiled(
+                              icon: Icons.person,
+                              onChange: (value) {
+                                address = value;
+                              },
+                              hintText: address,
+                              defaultConfig: false,
+                              height: 100.0,
+                              textInputype: TextInputType.text,
+                              textEditingController: null,
+                              putInitalValue: true,
+                              initalText: address,
+                            ),
+                          ),
                     Container(
                       padding: EdgeInsets.all(8),
                       child: CheckboxListTile(
@@ -217,10 +226,12 @@ class _UserProfileState extends State<UserProfile> {
                                 })),
                       ],
                     ),
+                   
                   ],
                 )),
               ),
       ),
     );
   }
+
 }

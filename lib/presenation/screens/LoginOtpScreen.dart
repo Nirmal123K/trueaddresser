@@ -56,6 +56,7 @@ class _LoginOTPScreenState extends State<LoginOTPScreen> {
               CustomRectengleButton(
                   buttonTitle: "Verify",
                   onClick: () {
+                   
                     authService
                         .verifyOTP(widget.verficationId,
                             userOtpController.text.trim(), context)

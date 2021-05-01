@@ -1,12 +1,11 @@
 import 'package:flutter/cupertino.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
 import 'package:trueaddresser/imports.dart';
 import 'package:trueaddresser/logic/auth_service.dart';
 import 'package:trueaddresser/presenation/custom%20ui/Provider_widget.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  
   await Firebase.initializeApp();
   runApp(MyApp());
   // SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -84,18 +83,3 @@ class _AppStartState extends State<AppStart> {
   }
 }
 
-// class App extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     final AuthService auth = Provider.of(context).auth;
-//     return StreamBuilder<String>(
-//       stream: auth.onAuthStateChanged,
-//         builder: (context, AsyncSnapshot<String> snapshot) {
-//           if(snapshot.connectionState == ConnectionState.active){
-//             final bool signedIn = snapshot.hasData;
-//             return signedIn ? HomeScreen() :SplashScreen();
-//           }
-//           return Container();
-//         });
-//   }
-// }

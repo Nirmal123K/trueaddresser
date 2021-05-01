@@ -12,7 +12,7 @@ export 'package:maps_launcher/maps_launcher.dart';
 
 export 'package:meta/meta.dart';
 
-export 'package:connectivity_plus/connectivity_plus.dart';
+
 
 export 'package:meta/meta.dart';
 
@@ -40,7 +40,6 @@ export 'package:trueaddresser/helper/functions.dart';
 
 //custom ui
 export 'package:trueaddresser/presenation/custom ui/widgetsUi.dart';
-export 'package:trueaddresser/presenation/custom ui/CustomAlertDialog.dart';
 export 'package:trueaddresser/presenation/custom%20ui/CustomRectengleButton.dart';
 export 'package:trueaddresser/presenation/custom%20ui/CustomTextFiled.dart';
 export 'package:trueaddresser/presenation/custom%20ui/UserGuideDialog.dart';

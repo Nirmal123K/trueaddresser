@@ -27,7 +27,6 @@ class _CustomUserCardState extends State<CustomUserCard> {
   bool isLikeButtonPressed = false;
   String internalUserLikes;
   int likes = 0;
-  AuthService _authService = AuthService();
   
 
   @override
