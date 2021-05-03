@@ -21,7 +21,7 @@ class _UserDeleteDialogState extends State<UserDeleteDialog> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  "are you sure you want to signout.",
+                  "are you sure you want to Delete Account.",
                   style: GoogleFonts.poppins(
                       textStyle: TextStyle(
                           color: HexColor('#491d7f'),
@@ -46,7 +46,7 @@ class _UserDeleteDialogState extends State<UserDeleteDialog> {
                     Container(
                       width: 150,
                       child: CustomRectengleButton(
-                          buttonTitle: "Yes",
+                          buttonTitle: "delete",
                           onClick: () {
                             _authService.deleteUser(widget.userUid).then(
                                 (value) => Navigator.pushAndRemoveUntil(
